@@ -6,7 +6,7 @@ from fastmcp.tools import Tool
 from auto_video_mcp.utils.http import http_client
 from bs4 import BeautifulSoup
 
-async def get_baidu_trending_func(args: dict) -> list:
+async def get_baidu_trending_func() -> list:
     """获取百度热榜数据"""
     
     response = await http_client.get(

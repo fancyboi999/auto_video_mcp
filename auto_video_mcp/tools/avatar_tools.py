@@ -65,6 +65,16 @@ async def create_avatar_by_video_tool(
             
             if not task_id:
                 raise ValueError("API返回的任务ID为空")
+
+            # 检查任务是否已存在
+            result = await db.execute(select(Task).where(Task.task_id == task_id))
+            existing_task = result.scalars().first()
+            if existing_task:
+                return {
+                    "task_id": task_id,
+                    "status": "existing",
+                    "message": "任务已存在，请直接查询任务状态"
+                }
             
             # 创建任务记录
             task = Task(

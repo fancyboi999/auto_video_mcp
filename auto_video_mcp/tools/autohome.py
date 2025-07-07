@@ -6,7 +6,7 @@ from fastmcp.tools import Tool
 from bs4 import BeautifulSoup
 
 
-async def get_autohome_trending_func(args: dict) -> list:
+async def get_autohome_trending_func() -> list:
     """获取汽车之家热榜数据"""
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
