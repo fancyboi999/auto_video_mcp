@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 # 项目元数据
 setup(
     name="auto_video_mcp",
-    version="0.0.2",
+    version="0.1.1",
     description="飞影数字人API服务，提供数字人相关功能",
     long_description=long_description,
     long_description_content_type="text/markdown",
