@@ -1,0 +1,36 @@
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+hifly.db
+
+# 环境变量文件
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE相关文件
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 日志文件
+*.log
+
+# 缓存目录
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 构建目录
+dist/
+build/
+*.egg-info/

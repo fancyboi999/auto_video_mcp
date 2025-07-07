@@ -1,0 +1,47 @@
+# 数据库迁移
+
+本项目使用Alembic进行数据库迁移管理。
+
+## 使用方法
+
+### 创建新的迁移
+
+当你修改了数据库模型后，需要创建新的迁移脚本：
+
+```bash
+python migrations.py create "描述你的变更"
+```
+
+这将在`migrations/versions`目录下创建一个新的迁移脚本。
+
+### 升级数据库
+
+要将数据库升级到最新版本：
+
+```bash
+python migrations.py upgrade
+```
+
+### 降级数据库
+
+要将数据库降级到上一个版本：
+
+```bash
+python migrations.py downgrade
+```
+
+要降级到特定版本：
+
+```bash
+python migrations.py downgrade <revision>
+```
+
+## 在应用程序中使用
+
+应用程序启动时，可以调用`run_migrations()`函数来自动升级数据库：
+
+```python
+from migrations import run_migrations
+
+async def startup_event():
+    await run_migrations() 

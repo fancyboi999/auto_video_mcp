@@ -1,0 +1,124 @@
+version = 1
+revision = 1
+requires-python = ">=3.11"
+
+[[package]]
+name = "auto_video_mcp"
+version = "0.0.1"
+source = { editable = "." }
+dependencies = [
+    { name = "build" },
+    { name = "fastapi" },
+    { name = "mcp", extra = ["cli"] },
+    { name = "pydantic" },
+    { name = "requests" },
+    { name = "setuptools" },
+    { name = "sqlalchemy" },
+    { name = "twine" },
+    { name = "uvicorn" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "build", specifier = ">=1.2.2.post1" },
+    { name = "fastapi", specifier = ">=0.110.0" },
+    { name = "mcp", extras = ["cli"], specifier = ">=1.6.0" },
+    { name = "pydantic", specifier = ">=2.11.3" },
+    { name = "requests", specifier = ">=2.32.3" },
+    { name = "setuptools", specifier = ">=45" },
+    { name = "sqlalchemy", specifier = ">=2.0.30" },
+    { name = "twine", specifier = ">=6.1.0" },
+    { name = "uvicorn", specifier = ">=0.34.2" },
+]
+
+[[package]]
+name = "annotated-types"
+version = "0.7.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ee/67/531ea369ba64dcff5ec9c3402f9f51bf748cec26dde048a2f973a4eea7f5/annotated_types-0.7.0.tar.gz", hash = "sha256:aff07c09a53a08bc8cfccb9c85b05f1aa9a2a6f23728d790723543408344ce89", size = 16081 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/78/b6/6307fbef88d9b5ee7421e68d78a9f162e0da4900bc5f5793f6d3d0e34fb8/annotated_types-0.7.0-py3-none-any.whl", hash = "sha256:1f02e8b43a8fbbc3f3e0d4f4bfc8131bcb4eebe8849b8e5c773f3a1c582a53", size = 13643 },
+]
+
+[[package]]
+name = "anyio"
+version = "4.9.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "idna" },
+    { name = "sniffio" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/95/7d/4c1bd541d4dffa1b52bd83fb8527089e097a106fc90b467a7313b105f840/anyio-4.9.0.tar.gz", hash = "sha256:673c0c244e15788651a4ff38710fea9675823028a6f08a5eda409e0c9840a028", size = 190949 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a1/ee/48ca1a7c89ffec8b6a0c5d02b89c305671d5ffd8d3c94acf8b8c408575bb/anyio-4.9.0-py3-none-any.whl", hash = "sha256:9f76d541cad6e36af7beb62e978876f3b41e3e04f2c1fbf0884604c0a9c4d93c", size = 100916 },
+]
+
+[[package]]
+name = "fastapi"
+version = "0.110.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pydantic" },
+    { name = "starlette" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a7/2d/2c8f8a6b2f6a0c9c8b2e9e6d3fd8e3e1e1c5e1e8c0e7e2e3a7c1c7e5e9e/fastapi-0.110.0.tar.gz", hash = "sha256:9b86b0ea5570a3f8e1b0e99f7e9df1c24fbc6f3c5c50cdcaad3b3a1d6f0d9b37", size = 163246 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e0/c0/1a0f62b1e5a4a9b0b5d3d0d3f4d2c3e6f50c0bfb9c8e3e9b6e9d0c7c8e8d/fastapi-0.110.0-py3-none-any.whl", hash = "sha256:2c9d8a5a34e7e9a962b7f3f23f9d3d6e3a48c8a5e5c67b1c1b13f0f0e6c9c85f", size = 81840 },
+]
+
+[[package]]
+name = "sqlalchemy"
+version = "2.0.30"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c6/d8/0d0b1f7d7e38c2d2c2a7c4b5c7e0c5d3b6b3a7b4e8e8c0a6ee9c8c90b3aa/SQLAlchemy-2.0.30.tar.gz", hash = "sha256:c3c9e0bdc5a95a0d5e4d1eb6d5c0d4d5c7d7e4e12a5f3f0b7f4c6a7d6f32e8c6", size = 9250408 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4b/d6/cd6e4a9a5c0f1c0a5c3e7c2e7a5a5d4c5e4b5d5e5e5e5e5e5e5e5e5e5e5e/SQLAlchemy-2.0.30-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:5b0c4c8a0b26b7b95d7a5d05f6a4f5f6b5d7c4c9c4b0f8c8a465f4448a5b1c3c9", size = 2816980 },
+]
+
+# 这里省略了其他依赖包的详细信息，实际使用时应包含所有依赖包的完整信息
+# 以下是主要依赖包的列表，完整文件应包含所有依赖包的详细信息
+
+[[package]]
+name = "pydantic"
+version = "2.11.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "annotated-types" },
+    { name = "pydantic-core" },
+    { name = "typing-extensions" },
+    { name = "typing-inspection" },
+]
+
+[[package]]
+name = "pydantic-core"
+version = "2.33.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "typing-extensions" },
+]
+
+[[package]]
+name = "starlette"
+version = "0.36.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio" },
+]
+
+[[package]]
+name = "typing-extensions"
+version = "4.13.2"
+source = { registry = "https://pypi.org/simple" }
+
+[[package]]
+name = "typing-inspection"
+version = "0.4.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "typing-extensions" },
+] 

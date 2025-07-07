@@ -1,0 +1,47 @@
+startCommand:
+  type: "stdio"
+  configSchema:
+    type: "object"
+    properties:
+      api_key:
+        type: "string"
+        title: "API Key"
+        description: "飞影API密钥"
+      log_level:
+        type: "string"
+        title: "日志级别"
+        description: "服务器日志级别"
+        default: "info"
+        enum: ["debug", "info", "warning", "error", "critical"]
+      database_url:
+        type: "string"
+        title: "数据库URL"
+        description: "数据库连接URL"
+        default: "sqlite+aiosqlite:///./data/hifly.db"
+      disabled_tools:
+        type: "string"
+        title: "不可用工具"
+        description: "逗号分隔的不可用工具列表，例如：tool_a,tool_b"
+      trends_hub_custom_rss_url:
+        type: "string"
+        title: "目标RSS连接"
+        description: "Trends Hub自定义RSS连接"
+    required: ["api_key"]
+  commandFunction: |-
+    (config) => ({
+      command: "python",
+      args: ["-m", "auto_video_mcp.server"],
+      env: {
+        FLYWORKS_API_TOKEN: config.api_key,
+        SERVER_LOG_LEVEL: config.log_level || "info",
+        DATABASE_URL: config.database_url || "sqlite+aiosqlite:///./data/hifly.db",
+        DISABLED_TOOLS: config.disabled_tools || "",
+        TRENDS_HUB_CUSTOM_RSS_URL: config.trends_hub_custom_rss_url || ""
+      }
+    })
+  exampleConfig:
+    api_key: "your-api-key-here"
+    log_level: "info"
+    database_url: "sqlite+aiosqlite:///./data/hifly.db"
+    disabled_tools: ""
+    trends_hub_custom_rss_url: ""

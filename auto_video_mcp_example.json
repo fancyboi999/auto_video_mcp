@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "auto_video_mcp": {
+      "command": "uvx",
+      "args": ["auto_video_mcp"],
+      "env": {
+        "FLYWORKS_API_TOKEN": "your_api_here"
+      }
+    }
+  }
+} 

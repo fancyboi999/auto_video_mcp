@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  auto_video_mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=sqlite+aiosqlite:///./data/hifly.db
+      # 请替换为您的API令牌
+      - FLYWORKS_API_TOKEN=${FLYWORKS_API_TOKEN}
+      - SERVER_LOG_LEVEL=info
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped 
