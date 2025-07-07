@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
-# 执行数据库迁移
-echo "Running database migrations..."
-alembic upgrade head
+# Decode the base64 config and write it to a file
+if [ -n "$CONFIG_JSON_BASE64" ]; then
+  echo "$CONFIG_JSON_BASE64" | base64 -d > /app/config.json
+fi
 
-# 启动服务器
-echo "Starting auto_video_mcp server..."
-exec python -m auto_video_mcp.server --transport http --host 0.0.0.0 --port 8000 
+# Execute the main process
+exec python -m auto_video_mcp.server

@@ -29,14 +29,10 @@ startCommand:
     required: ["api_key"]
   commandFunction: |-
     (config) => ({
-      command: "python",
-      args: ["-m", "auto_video_mcp.server"],
+      command: "bash",
+      args: ["/app/docker-entrypoint.sh"],
       env: {
-        FLYWORKS_API_TOKEN: config.api_key,
-        SERVER_LOG_LEVEL: config.log_level || "info",
-        DATABASE_URL: config.database_url || "sqlite+aiosqlite:///./data/hifly.db",
-        DISABLED_TOOLS: config.disabled_tools || "",
-        TRENDS_HUB_CUSTOM_RSS_URL: config.trends_hub_custom_rss_url || ""
+        CONFIG_JSON_BASE64: Buffer.from(JSON.stringify(config)).toString('base64')
       }
     })
   exampleConfig:

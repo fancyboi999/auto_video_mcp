@@ -13,6 +13,9 @@ RUN mkdir -p /app/data
 # Copy all files
 COPY . /app
 
+# Make entrypoint script executable
+RUN chmod +x /app/docker-entrypoint.sh
+
 # Install Python dependencies
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt \
@@ -20,6 +23,9 @@ RUN pip install --upgrade pip \
 
 # Set environment variable
 ENV PYTHONUNBUFFERED=1
+
+# Set entrypoint
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
 # Run the MCP server using stdio
 CMD ["python", "-m", "auto_video_mcp.server"]

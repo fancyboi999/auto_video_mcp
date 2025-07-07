@@ -36,7 +36,7 @@ DEFAULT_CONFIG = {
 class Config:
     """配置类，用于加载和管理配置"""
     
-    def __init__(self, config_path: Optional[str] = None):
+    def __init__(self, config_path: Optional[str] = "/app/config.json"):
         """
         初始化配置
         
@@ -181,7 +181,7 @@ class Config:
 # 创建全局配置实例
 config = Config()
 
-def load_config(config_path: Optional[str] = None) -> Config:
+def load_config(config_path: Optional[str] = "/app/config.json") -> Config:
     """
     加载配置
     
@@ -193,4 +193,4 @@ def load_config(config_path: Optional[str] = None) -> Config:
     """
     global config
     config = Config(config_path)
-    return config 
+    return config

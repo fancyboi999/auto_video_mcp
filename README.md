@@ -54,8 +54,8 @@
 
 ### 1. 环境要求
 - Python 3.11+
-- 飞影数字人 API Token
-- FireCrawl API Key (如果使用 `crawl_website` 工具)
+- 飞影数字人 API Token,项目必备 [申请地址](https://hifly.cc/i/tzZz0sFHXMu)
+- FireCrawl API Key (如果使用 `crawl_website` 工具) [申请地址](https://www.firecrawl.dev/referral?rid=WZEEPH67)
 
 ### 2. 安装步骤
 
