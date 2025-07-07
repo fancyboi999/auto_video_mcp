@@ -20,7 +20,6 @@ RUN pip install --upgrade pip \
 
 # Set environment variable
 ENV PYTHONUNBUFFERED=1
-ENV DATABASE_URL=sqlite+aiosqlite:///./data/hifly.db
 
 # Run the MCP server using stdio
 CMD ["python", "-m", "auto_video_mcp.server"]
