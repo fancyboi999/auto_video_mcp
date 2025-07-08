@@ -207,46 +207,45 @@ async def list_voices_tool(
         # 获取声音列表
         voices = response.get("data", [])
         
-        # 如果是查询自己克隆的声音，同步到数据库
-        if kind == 1 and user_id:
-            async for db in get_db():
-                try:
-                    for voice_data in voices:
-                        voice_id = voice_data.get("voice")
-                        if not voice_id:
-                            continue
-                            
-                        # 检查声音是否已存在
-                        result = await db.execute(select(Voice).where(Voice.voice_id == voice_id))
-                        existing_voice = result.scalars().first()
+        # 同步所有声音到数据库，不管是自己克隆的还是公共声音
+        async for db in get_db():
+            try:
+                for voice_data in voices:
+                    voice_id = voice_data.get("voice")
+                    if not voice_id:
+                        continue
                         
-                        if not existing_voice:
-                            # 创建声音记录
-                            voice = Voice(
-                                voice_id=voice_id,
-                                title=voice_data.get("title", "未命名"),
-                                voice_type=voice_data.get("type", 8),
-                                rate=voice_data.get("rate", "1.0"),
-                                volume=voice_data.get("volume", "1.0"),
-                                pitch=voice_data.get("pitch", "1.0"),
-                                demo_url=voice_data.get("demo_url"),
-                                user_id=user_id or "default"
-                            )
-                            db.add(voice)
-                        else:
-                            # 更新声音记录
-                            existing_voice.title = voice_data.get("title", existing_voice.title)
-                            existing_voice.voice_type = voice_data.get("type", existing_voice.voice_type)
-                            existing_voice.rate = voice_data.get("rate", existing_voice.rate)
-                            existing_voice.volume = voice_data.get("volume", existing_voice.volume)
-                            existing_voice.pitch = voice_data.get("pitch", existing_voice.pitch)
-                            existing_voice.demo_url = voice_data.get("demo_url", existing_voice.demo_url)
-                            existing_voice.updated_at = datetime.datetime.utcnow()
+                    # 检查声音是否已存在
+                    result = await db.execute(select(Voice).where(Voice.voice_id == voice_id))
+                    existing_voice = result.scalars().first()
                     
-                    await db.commit()
-                except Exception as e:
-                    await db.rollback()
-                    logger.error(f"同步声音数据到数据库失败: {str(e)}")
+                    if not existing_voice:
+                        # 创建声音记录
+                        voice = Voice(
+                            voice_id=voice_id,
+                            title=voice_data.get("title", "未命名"),
+                            voice_type=voice_data.get("type", 8),
+                            rate=voice_data.get("rate", "1.0"),
+                            volume=voice_data.get("volume", "1.0"),
+                            pitch=voice_data.get("pitch", "1.0"),
+                            demo_url=voice_data.get("demo_url"),
+                            user_id=user_id or "default"
+                        )
+                        db.add(voice)
+                    else:
+                        # 更新声音记录
+                        existing_voice.title = voice_data.get("title", existing_voice.title)
+                        existing_voice.voice_type = voice_data.get("type", existing_voice.voice_type)
+                        existing_voice.rate = voice_data.get("rate", existing_voice.rate)
+                        existing_voice.volume = voice_data.get("volume", existing_voice.volume)
+                        existing_voice.pitch = voice_data.get("pitch", existing_voice.pitch)
+                        existing_voice.demo_url = voice_data.get("demo_url", existing_voice.demo_url)
+                        existing_voice.updated_at = datetime.datetime.utcnow()
+                
+                await db.commit()
+            except Exception as e:
+                await db.rollback()
+                logger.error(f"同步声音数据到数据库失败: {str(e)}")
         
         # 返回结果
         return {
